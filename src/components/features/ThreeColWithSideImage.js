@@ -6,6 +6,8 @@ import { css } from "styled-components/macro";
 import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 
+import './styles.css';
+
 import defaultCardImage from "images/shield-icon.svg";
 
 import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3.svg";
@@ -74,11 +76,11 @@ export default ({ cards = null, heading = "Как начать?", subheading = "
     {
       imageSrc: ShieldIconImage,
       title: "Создаете заявку",
-      description: "Все ваши данные зашифрованы и хранятся на защищенных серверах"
+      description: "Все ваши данные зашифрованы и хранятся на защищенных серверах. Среднее время ответа оператора 2 минуты"
     },
     { imageSrc: SupportIconImage, 
       title: "Вносите деньги и подтверждаете оплату",
-      description: "Завершите процесс проверки, чтобы мы начали процедуру обмена ваших денег"
+      description: "Завершите процесс проверки, чтобы мы начали процедуру обмена ваших денег.  Среднее время обмена 15 минут"
     },
     { imageSrc: CustomizeIconImage, 
       title: "Получаете деньги на кошелёк",
@@ -95,7 +97,7 @@ export default ({ cards = null, heading = "Как начать?", subheading = "
         <VerticalSpacer />
         {cards.map((card, i) => (
           <Column key={i}>
-            <Card>
+            <Card className="card">
               <span className="imageContainer">
                 <img src={card.imageSrc || defaultCardImage} alt="" />
               </span>

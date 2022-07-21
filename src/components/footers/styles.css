@@ -1,0 +1,12 @@
+.SocialLinksContainer a svg{
+    width: 90px;
+    height: 50px;
+}
+
+.footer-services a {
+    font-size: 25px;
+}
+
+div.row {
+    padding-bottom: 15px;
+}

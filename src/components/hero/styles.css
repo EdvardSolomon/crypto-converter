@@ -1,3 +1,23 @@
-.heading-test {
-    font-size: 3rem;
+header.header {
+    padding-top: 10px;
+}
+
+div h2.heading-test {
+    font-size: 2rem;
+}
+
+header.header nav {
+    justify-content: center;
+}
+
+div.navigation {
+    padding-right: 60px;
+}
+
+div.navigation a {
+    font-size: 18px;
+}
+
+div.row {
+    padding-left: 0;
 }

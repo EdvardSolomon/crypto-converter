@@ -10,6 +10,7 @@ import { Container, ContentWithVerticalPadding } from "components/misc/Layouts.j
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 import { ReactComponent as QuotesLeftIconBase } from "images/quotes-l.svg"
 import { ReactComponent as SvgDecoratorBlob1 } from "images/dot-pattern.svg"
+import Form from "../forms/TwoColContactUsWithIllustrationFullForm.js";
 
 import './styles.css';
 
@@ -51,7 +52,7 @@ export default ({
 }) => {
   const buttonRoundedCss = buttonRounded && tw`rounded-full`;
   const navLinks = [
-    <NavLinks key={1}>
+    <NavLinks className="navigation" key={1}>
       <NavLink href="/#">ВОПРОСЫ И ОТВЕТЫ</NavLink>
       <NavLink href="/#">ПРАВИЛА</NavLink>
       <NavLink href="/#">КОНТАКТЫ</NavLink>
@@ -60,10 +61,10 @@ export default ({
   ];
   return (
     <>
-      <Header links={navLinks} />
-      <Container>
+      <Header className="header" links={navLinks} />
+      <Container >
         <ContentWithVerticalPadding>
-          <Row>
+          <Row className="row">
             <TextColumn>
               <Heading className="heading-test">{heading}</Heading>
               <Description>{description}</Description>
@@ -76,7 +77,7 @@ export default ({
                 ))}
               </FeatureList>
             </TextColumn>
-<div> CRYPTO CONVERTER FORM UNDER CONSTRUCTION</div>
+            <Form />
           </Row>
         </ContentWithVerticalPadding>
       </Container>

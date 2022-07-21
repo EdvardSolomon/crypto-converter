@@ -6,6 +6,8 @@ import logo from "../../images/logo.svg";
 import { ReactComponent as TelegramIcon } from "../../images/tg.svg";
 import tgLogo from "../../images/tg.png";
 
+import './styles.css';
+
 
 const Container = tw(ContainerBase)`bg-gray-900 text-gray-100 -mx-8 -mb-8`
 const Content = tw.div`max-w-screen-xl mx-auto py-20 lg:py-24`;
@@ -31,17 +33,17 @@ const CopyrightText = tw.p`text-center mt-10 font-medium tracking-wide text-sm t
 export default () => {
   return (
     <Container>
-      <Content>
+      <Content className="row">
         <Row>
           <LogoContainer>
             <LogoImg src={logo} />
             <LogoText>Название обменника</LogoText>
           </LogoContainer>
-          <LinksContainer>
+          <LinksContainer className="footer-services">
             <Link href="#">Условия обмена</Link>
             <Link href="#">Контакты</Link>
           </LinksContainer>
-          <SocialLinksContainer>
+          <SocialLinksContainer className="SocialLinksContainer">
             <SocialLink href="https://youtube.com">
               <TelegramIcon />
             </SocialLink>
