@@ -1,22 +1,40 @@
 .form-container {
     width: 100%;
+    border-width: 1px;
+    border-radius: 0.4rem;
+    outline: none;
+    background: #fff;
+    font: inherit;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    border: 0;
+    outline: 0;
+    padding: 22px 18px;
+    
 }
 
 .form-container .form {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    max-width: 100%;
+
 }
 
 .form .input-column {
+    margin-top: 24px;
     display: flex;
     width: 100%;
 }
-.from-input , .to-input {
+.from-input , .to-input, .exchange-rate {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
 }
+
+
 .from-input input, .to-input input, .input-column input{
     width: 100%;
     height: 64px;
@@ -26,50 +44,153 @@
     box-sizing: border-box;
     position: relative;
     margin-top: 0;
+    border-bottom-width: 0px;
 }
 
 .input {
         width: 100%;
         height: 64px;
         border-radius: 4px;
-        background-color: #fff;
         display: flex;
         box-sizing: border-box;
         position: relative;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.from-input input {
-    width: 100%;
-    padding: 0 24px;
-    font-family: "ProximaNova-Bold",Arial,Helvetica,sans-serif;
-    font-size: 20px;
-    line-height: 40px;
-    color: #352ac0;
+.input input {
+        width: 100%;
+        height: 100%;
+        padding: 0 24px;
+        font-size: 20px;
+        line-height: 40px;
+        color: #352ac0;
 }
 
 .currency-select  {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     user-select: none;
-    height: 40px;
+    height: 64px;
     width: 100px;
     flex-shrink: 0;
     overflow: hidden;
     position: relative;
     z-index: 2;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 4px;
 }
 
-span.send, span.get {
+.currency-select .select{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background-color .5s;
+}
+
+.currency-select .select .selected {
+    height:64px;
+    order: 0;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+    transform: translateY(0);
+    position: relative;
+}
+
+.currency-select .select li {
+    display: flex;
+    align-items: center;
+    color:  rgba(237,242,247,var(--tw-text-opacity));
+    padding: 0 30px 0 12px;
+    font-family: "ProximaNova-Bold",Arial,Helvetica,sans-serif;
+    font-size: 20px;
+    line-height: 40px;
+    text-transform: uppercase;
+    cursor: pointer;
+    order: 1;
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: transform .3s,opacity .2s;
+    visibility: hidden;
+}
+
+.currency-select.open-select{
+    overflow: visible;
+    z-index: 3;
+}
+
+.currency-select.open-select .select {
+    background: #271dac;
+    box-shadow: 0 5px 10px rgb(36 28 138 / 70%);
+    border-radius: 0 0 5px 5px;
+}
+
+.currency-select.open-select .select li {
+    opacity: 1;
+    color: #fff;
+    visibility: visible;
+    transform: translateY(0);
+    transition: transform .7s,opacity .3s .1s,background-color .5s;
+}
+
+span.send, span.get, .exchange-rate {
     font-family: "ProximaNova",Arial,Helvetica,sans-serif;
-    font-size: 16px;
     line-height: 19px;
+    --tw-text-opacity: 1;
     color: rgba(60,13,153,var(--tw-text-opacity));
     margin-bottom: 12px;
+    text-transform: uppercase;
+    font-size:16px;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 700;
 }
 
+.exchange-rate {
+    white-space: pre;
+    color: black;
+}
+
+.error-text {
+    color: #cf2e2e;
+    font-size: 16px;
+    text-align: left;
+    line-height: 1.5;
+    margin-top: 15px;
+    font-weight: 500;
+
+}
+
+.converter-content {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.converter-content label {
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-flex;
+    user-select: none;
+    box-sizing: border-box;
+    padding-right: 12px;
+    margin-left: 5px;
+}
+
+
+.converter-content input {
+    width: 18px;
+    height: 20px;
+    top: 5px;
+}
+
+.form button {
+    width: 50%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+
 .arrwos  {
-    margin: 8px auto 0;
+    margin: 15px auto ;
     background: #4a4ad3;
     width: 30px;
     height: 30px;
@@ -80,4 +201,26 @@ span.send, span.get {
     cursor: pointer;
     transition-property: background-color;
     transition-duration: .3s;
+}
+
+.currency-select .arrow[data-v-31e47d53] {
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    width: auto;
+    position: absolute;
+    right: 12px;
+    top: calc(50% - 5px);
+    transition-property: transform fill;
+    transition-duration: .3s;
+    fill: #352ac0;
+}
+
+.currency-select.open-select .arrow[data-v-31e47d53] {
+    transform: rotateX(180deg);
+    fill: #fff;
+}
+
+.currency-select.open-select .select li:hover {
+    background-color: #4537f2;
 }

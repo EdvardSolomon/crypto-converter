@@ -40,7 +40,6 @@ export default function App() {
           <Faq />
           <GetStarted />
           <MiniCenteredFooter />
-          <MainLandingPage />
         </Route>
       </Switch>
     </Router>
