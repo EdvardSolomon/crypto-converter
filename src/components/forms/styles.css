@@ -146,6 +146,7 @@ span.send, span.get, .exchange-rate {
 }
 
 .exchange-rate {
+    padding-top: 15px;
     white-space: pre;
     color: black;
 }

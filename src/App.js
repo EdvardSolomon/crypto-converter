@@ -35,10 +35,12 @@ export default function App() {
           <ThankYouPage />
         </Route>
         <Route path="/">
+          <div className="wrapper">
           <Hero />
           <Features />
           <Faq />
           <GetStarted />
+          </div>
           <MiniCenteredFooter />
         </Route>
       </Switch>

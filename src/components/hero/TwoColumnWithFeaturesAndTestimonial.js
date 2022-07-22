@@ -63,16 +63,16 @@ export default ({
     <>
       <Header className="header" links={navLinks} />
       <Container >
-        <ContentWithVerticalPadding>
+        <ContentWithVerticalPadding className="underRow">
           <Row className="row">
-            <TextColumn>
+            <TextColumn className="text-column">
               <Heading className="heading-test">{heading}</Heading>
-              <Description>{description}</Description>
+              <Description className="mainDescript">{description}</Description>
               <FeatureList>
                 {features.map((feature, index) => (
                   <Feature key={index}>
                     <FeatureIcon />
-                    <FeatureText>{feature}</FeatureText>
+                    <FeatureText className="mainDescript">{feature}</FeatureText>
                   </Feature>
                 ))}
               </FeatureList>

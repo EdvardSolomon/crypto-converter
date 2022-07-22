@@ -53,7 +53,7 @@ export default ({
                 <span className="send">Отправляете:</span>
                 <div className="input">
                 <Input type="text" name="crypto" placeholder="BTC"  />
-                <div className="currency-select  open-select"> <ul className="select">
+                <div className="currency-select"> <ul className="select">
                   <li className="selected">BTC</li>
                   <li>ETH</li>
                   <li>DASH</li>
@@ -69,9 +69,6 @@ export default ({
                   </div>
                   </div>
                 </div>
-              </div>
-              <div className="arrwos"> 
-              <svg width="19" height="15" viewBox="0 0 19 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-715fec40=""><path d="M9 4.73c0 .216.088.433.263.599a.933.933 0 001.267 0l2.573-2.434v11.257c0 .468.402.848.897.848s.896-.38.896-.848V2.895L17.47 5.33a.933.933 0 001.267 0 .816.816 0 000-1.2L14.634.25a.933.933 0 00-1.268 0l-4.103 3.88a.822.822 0 00-.263.6zM5.634 14.752l4.103-3.882a.816.816 0 000-1.199.932.932 0 00-1.267 0l-2.573 2.434V.848C5.897.38 5.495 0 5 0s-.896.38-.896.848v11.257L1.53 9.67a.932.932 0 00-1.267 0 .823.823 0 00-.263.6c0 .217.088.434.263.6l4.103 3.88a.933.933 0 001.268 0z" fill="#fff"></path></svg>
               </div>
               <span className="exchange-rate">Курс обмена 1 BTC = 23526.61844298 USDT</span>
               <div className="input-column">
