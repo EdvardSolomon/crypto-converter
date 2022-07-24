@@ -4,7 +4,6 @@ import React from "react";
 import { css } from "styled-components/macro"; //eslint-disable-line
 
  import Hero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
-import Header from 'components/headers/light.js';
 import Features from 'components/features/ThreeColWithSideImage.js';
 import Faq  from 'components/faqs/SingleCol.js';
 import GetStarted from "components/cta/GetStarted";
