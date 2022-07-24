@@ -41,6 +41,7 @@ export default function App() {
           <GetStarted />
           </div>
           <MiniCenteredFooter />
+          <MainLandingPage />
         </Route>
       </Switch>
     </Router>
