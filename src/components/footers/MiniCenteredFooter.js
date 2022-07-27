@@ -4,7 +4,6 @@ import styled from "styled-components";
 import {Container as ContainerBase } from "components/misc/Layouts.js"
 import logo from "../../images/logo.svg";
 import { ReactComponent as TelegramIcon } from "../../images/tg.svg";
-import tgLogo from "../../images/tg.png";
 
 import './styles.css';
 

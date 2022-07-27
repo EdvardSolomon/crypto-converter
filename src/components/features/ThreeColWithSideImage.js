@@ -3,9 +3,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 //eslint-disable-next-line
 import { css } from "styled-components/macro";
-import { SectionHeading, Subheading as SubheadingBase } from "components/misc/Headings.js";
-import { SectionDescription } from "components/misc/Typography.js";
-
+import { SectionHeading} from "components/misc/Headings.js";
 import './styles.css';
 
 import defaultCardImage from "images/shield-icon.svg";
@@ -15,21 +13,13 @@ import { ReactComponent as SvgDecoratorBlob3 } from "images/svg-decorator-blob-3
 import SupportIconImage from "images/icon_2.png";
 import ShieldIconImage from "images/icon_1.png";
 import CustomizeIconImage from "images/icon_3.png";
-import FastIconImage from "images/fast-icon.svg";
-import ReliableIconImage from "images/reliable-icon.svg";
-import SimpleIconImage from "images/simple-icon.svg";
-import moneyExchange from "images/money-exchange.png";
-import TFhours from "images/24-hours.png";
-import customerService from "images/customer-service.png";
 
 const Container = tw.div`relative`;
 
 const ThreeColumnContainer = styled.div`
   ${tw`flex flex-col items-center md:items-stretch md:flex-row flex-wrap md:justify-center max-w-screen-lg mx-auto py-20 md:py-24`}
 `;
-const Subheading = tw(SubheadingBase)`mb-4`;
 const Heading = tw(SectionHeading)`w-full`;
-const Description = tw(SectionDescription)`w-full text-center`;
 
 const VerticalSpacer = tw.div`mt-10 w-full`
 

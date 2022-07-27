@@ -1,7 +1,6 @@
 import "tailwindcss/dist/base.css";
 import "styles/globalStyles.css";
 import React from "react";
-import { css } from "styled-components/macro"; //eslint-disable-line
 
  import Hero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
 import Features from 'components/features/ThreeColWithSideImage.js';
@@ -11,10 +10,10 @@ import MiniCenteredFooter from "components/footers/MiniCenteredFooter";
 
 
 import ComponentRenderer from "ComponentRenderer.js";
-import MainLandingPage from "MainLandingPage.js";
 import ThankYouPage from "ThankYouPage.js";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import MainLandingPage from "MainLandingPage";
 
 export default function App() {
   // If you want to disable the animation just use the disabled `prop` like below on your page's component
@@ -41,7 +40,6 @@ export default function App() {
           <GetStarted />
           </div>
           <MiniCenteredFooter />
-          <MainLandingPage />
         </Route>
       </Switch>
     </Router>

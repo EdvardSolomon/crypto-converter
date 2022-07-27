@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useCallback } from "react";
 import tw from "twin.macro";
-import styled from "styled-components";
-import { css } from "styled-components/macro"; //eslint-disable-line
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import CurrencyInput from "./CurrencySelect";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import axios from 'axios';
 
 import './styles.css';
@@ -25,11 +23,8 @@ export default ({
   const [amount2, setAmount2] = useState(1);
   const [currency1, setCurrency1] = useState('BTC');
   const [currency2, setCurrency2] = useState('USD');
-  const [rates2, setRates2] = useState([]);
-  const rates =   [
-    {name: 'USD', rate: 3258.887541779804},
-    {name: 'EUR', rate: 2782.5255080599272}
-  ]
+  const [rates, setRates] = useState([]);
+  const [exchangeRateCurrency, setExchangeRateCurrency] = useState('');
   const cryptos = [{
     "name": "BTC",
   },
@@ -46,62 +41,76 @@ export default ({
     "name": "SOL",
   },
   ]
-
   const assetsList = ['USD', 'EUR'];
-  const currentCurrency = 'BTC';
+  const startCurrency = 'BTC';
+
+ /* const run = async (newCurrency) => {
+    const response = await axios.get(
+      `https://rest.coinapi.io/v1/exchangerate/${newCurrency}?invert=false&filter_asset_id=${assetsList.toString()}`,
+      {
+        headers: { 'X-CoinAPI-Key': '72DD5E4E-9EAF-4445-A8E6-307F68C39266' },  // '184E6F58-D4F5-465B-B23E-8AE1DF520C83' 05FE9068-59C3-4112-91CD-A679AA03AE8E  72DD5E4E-9EAF-4445-A8E6-307F68C39266
+      }
+    );
+  
+    const body = response.data;
+    const { rates } = body;
+  
+    const assetRate = rates.map((r) => ({
+      name: r.asset_id_quote,
+      rate: r.rate,
+    }));
+   setRates(assetRate);
+   
+  }; */
     
-    async function run() {
-      const response = await axios.get(
-        `https://rest.coinapi.io/v1/exchangerate/${currentCurrency}?invert=false&filter_asset_id=${assetsList.toString()}`,
-        {
-          headers: { 'X-CoinAPI-Key': '05FE9068-59C3-4112-91CD-A679AA03AE8E' },
-        }
-      );
-    
-      const body = response.data;
-      const { rates } = body;
-        
-      const assetRate = rates.map((r) => ({
-        name: r.asset_id_quote,
-        rate: r.rate,
-      }));
 
-      setRates2(assetRate); 
-      console.log(assetRate);
-    }
+    useEffect( () => {
+      const getUsers = async () => {
+        const users = await run(startCurrency);
+        setRates(users);
+      };
+  
 
+    console.log(rates);
+  
+   // handleAmount1Change(currency1);
+ 
+    }, [run]);
 
-  const exchangeRate = `КУРС ОБМЕНА 1 ${currency1} = ${findRate(currency2)} ${currency2}`;
+    const exchangeRate  = `КУРС ОБМЕНА 1 ${currency1} = ${exchangeRateCurrency} ${currency2}`;
+  
 
-  function findRate(currency){
-    let findRate = rates.find(fiat => fiat.name === currency);
-    return format(findRate.rate);
+   function findRate(currency){
+    const findRate = rates.find(fiat => fiat.name === currency);
+    return format(findRate.rate, 2);
   }
   
-  function format(number){
-    return number.toFixed(2);
+  function format(number, symbols){
+    return number.toFixed(symbols);
  }
 
  function handleAmount1Change(amount1){
-   setAmount2(format(amount1 * findRate(currency2)));
+   setAmount2(format(amount1 * findRate(currency2), 2));
    setAmount1(amount1);
  }
 
  function handleCurrency1Change(currency1){
-   setAmount2(format(amount1 * findRate(currency2)));
+   run(currency1);
+   setAmount2(format(amount1 * findRate(currency2), 2));
    setCurrency1(currency1);
+   setExchangeRateCurrency(findRate(currency2));
  }
 
  function handleAmount2Change(amount2){
-   setAmount1(format(amount2 * findRate(currency1)));
+   setAmount1(format(amount2 / findRate(currency2), 6));
    setAmount2(amount2);
  }
 
  function handleCurrency2Change(currency2){
-   setAmount2(format(amount1 * findRate(currency2)));
+   setAmount2(format(amount1 * findRate(currency2), 2));
    setCurrency2(currency2);
+   setExchangeRateCurrency(findRate(currency2));
  }
-
 
 
   return (
