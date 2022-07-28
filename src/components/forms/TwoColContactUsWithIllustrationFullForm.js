@@ -44,11 +44,11 @@ export default ({
   const assetsList = ['USD', 'EUR'];
   const startCurrency = 'BTC';
 
- /* const run = async (newCurrency) => {
+  const run = useCallback(async (newCurrency) => {
     const response = await axios.get(
       `https://rest.coinapi.io/v1/exchangerate/${newCurrency}?invert=false&filter_asset_id=${assetsList.toString()}`,
       {
-        headers: { 'X-CoinAPI-Key': '72DD5E4E-9EAF-4445-A8E6-307F68C39266' },  // '184E6F58-D4F5-465B-B23E-8AE1DF520C83' 05FE9068-59C3-4112-91CD-A679AA03AE8E  72DD5E4E-9EAF-4445-A8E6-307F68C39266
+        headers: { 'X-CoinAPI-Key': '5C34ED9C-B95E-4FD5-AEE6-D6BE70E8A8BF' },  // '184E6F58-D4F5-465B-B23E-8AE1DF520C83' 05FE9068-59C3-4112-91CD-A679AA03AE8E  72DD5E4E-9EAF-4445-A8E6-307F68C39266
       }
     );
   
@@ -61,21 +61,23 @@ export default ({
     }));
    setRates(assetRate);
    
-  }; */
+  }, []);
     
 
-    useEffect( () => {
-      const getUsers = async () => {
-        const users = await run(startCurrency);
-        setRates(users);
-      };
-  
+    useEffect(() => {
 
-    console.log(rates);
-  
-   // handleAmount1Change(currency1);
+       run(startCurrency);
  
     }, [run]);
+
+    useEffect (() =>{
+
+      if(!rates.length == 0) {
+        handleAmount1Change(amount1);
+        setExchangeRateCurrency(findRate(currency2));
+      }
+
+    }, [rates])
 
     const exchangeRate  = `КУРС ОБМЕНА 1 ${currency1} = ${exchangeRateCurrency} ${currency2}`;
   
@@ -88,7 +90,6 @@ export default ({
   function format(number, symbols){
     return number.toFixed(symbols);
  }
-
  function handleAmount1Change(amount1){
    setAmount2(format(amount1 * findRate(currency2), 2));
    setAmount1(amount1);
