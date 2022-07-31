@@ -1,0 +1,55 @@
+header.header {
+    padding-top: 10px;
+    display: block;
+}
+
+div h2.heading-test {
+    font-size: 43px;;
+}
+
+div p.mainDescript {
+    font-size: 20px;
+}
+
+div.text-column {
+    padding-bottom: 10rem;
+}
+
+header.header nav {
+    flex: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+div.navigation {
+    width: 75%;
+}
+
+
+div.navigation a {
+    margin-left: 75px;
+    font-size: 18px;
+    width: 25%;
+}
+
+div.navigation a:first-child{
+    margin-left: 0px;
+}
+
+div.row {
+    padding-left: 0;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+
+div.underRow {
+    padding-bottom: 0;
+}
+
+.wrapper {
+    width: 1500px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

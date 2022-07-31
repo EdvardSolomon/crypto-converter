@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import tw from "twin.macro";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import CurrencyInput from "./CurrencySelect";
-import {useState, useEffect} from 'react';
+import {useState, useEffect,} from 'react';
 import axios from 'axios';
 
 import './styles.css';
@@ -15,7 +15,7 @@ const SubmitButton = tw(PrimaryButtonBase)`inline-block mt-8`
 
 export default ({
   submitButtonText = "Создать заявку",
-  formAction = "#",
+  formAction = '/order',
   formMethod = "get",
   
 }) => {
@@ -25,6 +25,7 @@ export default ({
   const [currency2, setCurrency2] = useState('USD');
   const [rates, setRates] = useState([]);
   const [exchangeRateCurrency, setExchangeRateCurrency] = useState('');
+  const [agree, setAgree] = useState(true);   
   const cryptos = [{
     "name": "BTC",
   },
@@ -43,12 +44,13 @@ export default ({
   ]
   const assetsList = ['USD', 'EUR'];
   const startCurrency = 'BTC';
+  const maxLenghtFormat = 10;
 
   const run = useCallback(async (newCurrency) => {
     const response = await axios.get(
       `https://rest.coinapi.io/v1/exchangerate/${newCurrency}?invert=false&filter_asset_id=${assetsList.toString()}`,
       {
-        headers: { 'X-CoinAPI-Key': '5C34ED9C-B95E-4FD5-AEE6-D6BE70E8A8BF' },  // '184E6F58-D4F5-465B-B23E-8AE1DF520C83' 05FE9068-59C3-4112-91CD-A679AA03AE8E  72DD5E4E-9EAF-4445-A8E6-307F68C39266
+        headers: { 'X-CoinAPI-Key': '184E6F58-D4F5-465B-B23E-8AE1DF520C83' },  // '184E6F58-D4F5-465B-B23E-8AE1DF520C83' 05FE9068-59C3-4112-91CD-A679AA03AE8E  72DD5E4E-9EAF-4445-A8E6-307F68C39266
       }
     );
   
@@ -86,11 +88,21 @@ export default ({
     const findRate = rates.find(fiat => fiat.name === currency);
     return format(findRate.rate, 2);
   }
+
+  function digitValidation(inputValue){
+    const str = inputValue.toString();
+     const result = str.replace(/[^\d.]/g, '');
+     if (result.length > maxLenghtFormat){
+     const Nresult = result.substring(0, maxLenghtFormat);
+     return Nresult
+     }     return result
+  }
   
   function format(number, symbols){
     return number.toFixed(symbols);
  }
  function handleAmount1Change(amount1){
+  amount1 = digitValidation(amount1);
    setAmount2(format(amount1 * findRate(currency2), 2));
    setAmount1(amount1);
  }
@@ -103,6 +115,7 @@ export default ({
  }
 
  function handleAmount2Change(amount2){
+  amount2 = digitValidation(amount2);
    setAmount1(format(amount2 / findRate(currency2), 6));
    setAmount2(amount2);
  }
@@ -114,14 +127,15 @@ export default ({
  }
 
 
+
   return (
     <Container className="form-container">
-            <Form action={formAction} method={formMethod} className="form">
+            <form action={formAction} method={formMethod} className="form">
               <div className="input-column">
                 <div className="from-input">
                 <span className="send">Отправляете:</span>
                 <div className="input">
-                <CurrencyInput onAmountChange={handleAmount1Change} onCurrencyChange={handleCurrency1Change} currencies={cryptos} amount={amount1} currency={currency1}/>
+                <CurrencyInput name="currency1" onAmountChange={handleAmount1Change} onCurrencyChange={handleCurrency1Change} currencies={cryptos} amount={amount1} currency={currency1}/>
                   </div>
                 </div>
               </div>
@@ -130,27 +144,27 @@ export default ({
                 <div className="to-input">
                 <span className="get">Получаете:</span>
                 <div className="input">
-                <CurrencyInput onAmountChange={handleAmount2Change} onCurrencyChange={handleCurrency2Change} currencies={rates} amount={amount2} currency={currency2}/>
+                <CurrencyInput name="currency2" onAmountChange={handleAmount2Change} onCurrencyChange={handleCurrency2Change} currencies={rates} amount={amount2} currency={currency2}/>
                   </div>
                 </div>
               </div>
               <div className="input-column">
               <div className="input">
-                <Input type="text" name="subject" placeholder="ФИО получателя" />
+                <Input type="text" name="email" placeholder="Email" required="required"/>
                 </div>
               </div>
               <div className="input-column">
               <div className="input">
-                <Input type="text" name="wallet" placeholder="Номер кошелька" />
+                <Input type="text" name="wallet" placeholder="Номер кошелька" required="required"/>
                 </div>
               </div>
               <div className="error-text">Минимальная сумма для конвертации 0.00219701 BTC</div>
               <div className="converter-content">
-                <Input type="checkbox" name="policy" />
+                <Input type="checkbox" name="policy" defaultChecked='false' onClick={(e) => setAgree(e.target.checked)}/>
                 <label>Я согласен на обработку персональных данных и принимаю правила обмена</label>
               </div>
-              <SubmitButton type="submit">{submitButtonText}</SubmitButton>
-            </Form>
+              <SubmitButton type="submit" disabled={!agree}>{submitButtonText} </SubmitButton>
+            </form>
     </Container>
   );
 };

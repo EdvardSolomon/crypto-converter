@@ -182,3 +182,12 @@ span.send, span.get, .exchange-rate {
 .currency-select.open-select .select li:hover {
     background-color: #4537f2;
 }
+
+
+button:disabled {
+    background-color: grey;
+}
+
+button:disabled:hover {
+    background-color: grey;
+}
