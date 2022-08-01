@@ -10,3 +10,7 @@
 div.row {
     padding-bottom: 15px;
 }
+
+div.container_row {
+    margin: 0;
+}
