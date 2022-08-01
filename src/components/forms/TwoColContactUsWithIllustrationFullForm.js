@@ -3,9 +3,12 @@ import tw from "twin.macro";
 import { PrimaryButton as PrimaryButtonBase } from "components/misc/Buttons.js";
 import CurrencyInput from "./CurrencySelect";
 import {useState, useEffect,} from 'react';
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 import './styles.css';
+import { UseData } from "components/contexts/DataContext";
 
 const Container = tw.div`relative`;
 const Form = tw.form`mt-8 md:mt-10 text-sm flex flex-col max-w-sm mx-auto md:mx-0`
@@ -126,16 +129,29 @@ export default ({
    setExchangeRateCurrency(findRate(currency2));
  }
 
+const {register, handleSubmit, formState: {errors}} = useForm();
+const {data, setValues} = UseData();
+const history = useHistory();
+
+ const onSubmit = (data) => {
+  data.currency1 = currency1;
+  data.currency2 = currency2;
+  data.amount1 = amount1;
+  data.amount2 = amount2;
+  setValues(data);
+  history.push("/order");
+ }
+
 
 
   return (
     <Container className="form-container">
-            <form action={formAction} method={formMethod} className="form">
+            <form onSubmit={handleSubmit(onSubmit)} method={formMethod} className="form">
               <div className="input-column">
                 <div className="from-input">
                 <span className="send">Отправляете:</span>
                 <div className="input">
-                <CurrencyInput name="currency1" onAmountChange={handleAmount1Change} onCurrencyChange={handleCurrency1Change} currencies={cryptos} amount={amount1} currency={currency1}/>
+                <CurrencyInput {...register("currency1")} onAmountChange={handleAmount1Change} onCurrencyChange={handleCurrency1Change} currencies={cryptos} amount={amount1} currency={currency1}/>
                   </div>
                 </div>
               </div>
@@ -144,23 +160,23 @@ export default ({
                 <div className="to-input">
                 <span className="get">Получаете:</span>
                 <div className="input">
-                <CurrencyInput name="currency2" onAmountChange={handleAmount2Change} onCurrencyChange={handleCurrency2Change} currencies={rates} amount={amount2} currency={currency2}/>
+                <CurrencyInput {...register("currency2")} onAmountChange={handleAmount2Change} onCurrencyChange={handleCurrency2Change} currencies={rates} amount={amount2} currency={currency2}/>
                   </div>
                 </div>
               </div>
               <div className="input-column">
               <div className="input">
-                <Input type="text" name="email" placeholder="Email" required="required"/>
+                <Input type="text" {...register("email")} placeholder="Email" required="required"/>
                 </div>
               </div>
               <div className="input-column">
               <div className="input">
-                <Input type="text" name="wallet" placeholder="Номер кошелька" required="required"/>
+                <Input type="text" {...register("wallet")} placeholder="Номер кошелька" required="required"/>
                 </div>
               </div>
               <div className="error-text">Минимальная сумма для конвертации 0.00219701 BTC</div>
               <div className="converter-content">
-                <Input type="checkbox" name="policy" defaultChecked='false' onClick={(e) => setAgree(e.target.checked)}/>
+                <Input type="checkbox" {...register("policy")} defaultChecked='false' onClick={(e) => setAgree(e.target.checked)}/>
                 <label>Я согласен на обработку персональных данных и принимаю правила обмена</label>
               </div>
               <SubmitButton type="submit" disabled={!agree}>{submitButtonText} </SubmitButton>

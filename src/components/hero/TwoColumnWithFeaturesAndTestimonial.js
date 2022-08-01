@@ -1,15 +1,12 @@
 import React from "react";
 import tw from "twin.macro";
-import HeaderBase, { NavLinks, NavLink } from "components/headers/light.js";
 import { SectionHeading } from "components/misc/Headings.js";
 import { SectionDescription } from "components/misc/Typography.js";
 import { Container, ContentWithVerticalPadding } from "components/misc/Layouts.js";
 import { ReactComponent as CheckboxIcon } from "feather-icons/dist/icons/check-circle.svg";
 import Form from "../forms/TwoColContactUsWithIllustrationFullForm.js";
 
-import './styles.css';
 
-const Header = tw(HeaderBase)`max-w-none`;
 const Row = tw.div`flex flex-col lg:flex-row justify-between items-center lg:pt-16 max-w-screen-2xl mx-auto sm:px-8`;
 const Column = tw.div``;
 const TextColumn = tw(Column)`mr-auto lg:mr-0 max-w-lg lg:max-w-xl xl:max-w-2xl`;
@@ -27,17 +24,8 @@ export default ({
   features = ["Круглосуточный обмен", "Обменяем за 15 минут", "Лучшая крипто-поддержка"],
 
 }) => {
-  const navLinks = [
-    <NavLinks className="navigation" key={1}>
-      <NavLink href="/#">ВОПРОСЫ И ОТВЕТЫ</NavLink>
-      <NavLink href="/#">ПРАВИЛА</NavLink>
-      <NavLink href="/#">КОНТАКТЫ</NavLink>
-      <NavLink href="/#">Telegram</NavLink>
-    </NavLinks>
-  ];
   return (
     <>
-      <Header className="header" links={navLinks} />
       <Container >
         <ContentWithVerticalPadding className="underRow">
           <Row className="row">
