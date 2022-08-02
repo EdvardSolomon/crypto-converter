@@ -7,8 +7,8 @@ import HeaderBase, { NavLinks, NavLink } from "components/headers/light.js";
 import Hero from "components/hero/TwoColumnWithFeaturesAndTestimonial.js";
 import Features from 'components/features/ThreeColWithSideImage.js';
 import Faq  from 'components/faqs/SingleCol.js';
-import GetStarted from "components/cta/GetStarted";
-import MiniCenteredFooter from "components/footers/MiniCenteredFooter";
+import GetStarted from "components/cta/GetStarted.js";
+import MiniCenteredFooter from "components/footers/MiniCenteredFooter.js";
 
 import './styles.css';
 
@@ -28,7 +28,7 @@ export default function App() {
   const Header = tw(HeaderBase)`max-w-none`;
   const navLinks = [
       <NavLinks className="navigation" key={1}>
-        <NavLink href="/#FAQ">ВОПРОСЫ И ОТВЕТЫ</NavLink>
+        <NavLink href="/#FAQ">ВОПРОСЫ И ОТВЕТЫ1</NavLink>
         <NavLink href="/#rules">ПРАВИЛА</NavLink>
         <NavLink href="/#">УСЛОВИЯ ОБМЕНА</NavLink>
         <NavLink href="/#">TELEGRAM</NavLink>
