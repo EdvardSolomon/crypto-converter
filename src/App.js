@@ -28,10 +28,10 @@ export default function App() {
   const Header = tw(HeaderBase)`max-w-none`;
   const navLinks = [
       <NavLinks className="navigation" key={1}>
-        <NavLink href="/#">ВОПРОСЫ И ОТВЕТЫ</NavLink>
-        <NavLink href="/#">ПРАВИЛА</NavLink>
-        <NavLink href="/#">КОНТАКТЫ</NavLink>
-        <NavLink href="/#">Telegram</NavLink>
+        <NavLink href="/#FAQ">ВОПРОСЫ И ОТВЕТЫ</NavLink>
+        <NavLink href="/#rules">ПРАВИЛА</NavLink>
+        <NavLink href="/#">УСЛОВИЯ ОБМЕНА</NavLink>
+        <NavLink href="/#">TELEGRAM</NavLink>
       </NavLinks>
     ];
 
@@ -41,12 +41,6 @@ export default function App() {
     <Header className="header" links={navLinks} />
     <Router>
       <Switch>
-        <Route path="/components/:type/:subtype/:name">
-          <ComponentRenderer />
-        </Route>
-        <Route path="/components/:type/:name">
-          <ComponentRenderer />
-        </Route>
         <Route path="/main">
           <MainLandingPage />
         </Route>

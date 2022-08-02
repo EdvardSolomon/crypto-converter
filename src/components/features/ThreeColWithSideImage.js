@@ -81,7 +81,7 @@ export default ({ cards = null, heading = "Как начать?", subheading = "
   if (!cards) cards = defaultCards;
 
   return (
-    <Container>
+    <Container id="rules">
       <ThreeColumnContainer>
         <Heading>{heading}</Heading>
         <VerticalSpacer />

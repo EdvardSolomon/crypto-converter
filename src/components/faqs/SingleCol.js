@@ -78,7 +78,7 @@ export default ({
   };
 
   return (
-    <Container>
+    <Container id="FAQ">
       <ContentWithPaddingXl>
         <Column>
           <HeaderContent>
