@@ -28,7 +28,7 @@ export default function App() {
   const Header = tw(HeaderBase)`max-w-none`;
   const navLinks = [
       <NavLinks className="navigation" key={1}>
-        <NavLink href="/#FAQ">ВОПРОСЫ И ОТВЕТЫ1</NavLink>
+        <NavLink href="/#FAQ">ВОПРОСЫ И ОТВЕТЫ</NavLink>
         <NavLink href="/#rules">ПРАВИЛА</NavLink>
         <NavLink href="/#">УСЛОВИЯ ОБМЕНА</NavLink>
         <NavLink href="/#">TELEGRAM</NavLink>
