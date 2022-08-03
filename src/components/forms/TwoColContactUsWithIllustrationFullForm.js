@@ -53,7 +53,7 @@ export default ({
     const response = await axios.get(
       `https://rest.coinapi.io/v1/exchangerate/${newCurrency}?invert=false&filter_asset_id=${assetsList.toString()}`,
       {
-        headers: { 'X-CoinAPI-Key': '184E6F58-D4F5-465B-B23E-8AE1DF520C83' },  // '184E6F58-D4F5-465B-B23E-8AE1DF520C83' 05FE9068-59C3-4112-91CD-A679AA03AE8E  72DD5E4E-9EAF-4445-A8E6-307F68C39266
+        headers: { 'X-CoinAPI-Key': '72DD5E4E-9EAF-4445-A8E6-307F68C39266' },  // '184E6F58-D4F5-465B-B23E-8AE1DF520C83' 05FE9068-59C3-4112-91CD-A679AA03AE8E  72DD5E4E-9EAF-4445-A8E6-307F68C39266
       }
     );
   
