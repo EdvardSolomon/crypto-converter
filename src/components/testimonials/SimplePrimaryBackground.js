@@ -40,7 +40,7 @@ export default ({
 
 
   return (
-    <PrimaryBackgroundContainer>
+    <PrimaryBackgroundContainer className="primary-container">
       <div className="container-order">
           <Heading className="header">{heading}</Heading>
           <Description>{description}{randomNumberInRange(1, 500)}</Description>

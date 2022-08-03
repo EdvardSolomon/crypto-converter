@@ -6,3 +6,26 @@
 .option {
     font-size: 20px;
 }
+
+@media only screen and (max-width: 740px) {
+
+    .order {
+        font-size: 22px;
+    }
+    .option {
+        font-size: 18px;
+    }
+    h2.header {
+        font-size: 25px;
+    }    
+
+    div.row-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        height: 100%;
+    }
+    .row-container button{
+        font-size: 17px;
+    }
+
+}

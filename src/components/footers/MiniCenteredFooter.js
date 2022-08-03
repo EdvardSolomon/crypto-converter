@@ -36,18 +36,13 @@ export default () => {
         <Row>
           <LogoContainer>
             <LogoImg src={logo} />
-            <LogoText>Название обменника</LogoText>
+            <LogoText>CryptoWIN</LogoText>
           </LogoContainer>
           <LinksContainer className="footer-services">
             <Link href="#">Условия обмена</Link>
             <Link href="#">Контакты</Link>
           </LinksContainer>
-          <SocialLinksContainer className="SocialLinksContainer">
-            <SocialLink href="https://youtube.com">
-              <TelegramIcon />
-            </SocialLink>
-          </SocialLinksContainer>
-          <CopyrightText> СЕРВИС КАЧЕСТВЕННЫХ И БЫСТРЫХ ОБМЕНОВ КРИПТОВАЛЮТ 24/7
+          <CopyrightText className="copyrightText"> СЕРВИС КАЧЕСТВЕННЫХ И БЫСТРЫХ ОБМЕНОВ КРИПТОВАЛЮТ 24/7
 © Все права защищены. Copyright © 2015 - 2022
           </CopyrightText>
         </Row>

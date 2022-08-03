@@ -49,3 +49,47 @@ div.row {
     margin-right: auto;
     margin-left: auto;
 }
+
+@media only screen and (max-width: 1300px) {
+
+    .wrapper {
+        width: 100%;
+    }
+
+}
+
+@media only screen and (max-width: 740px) {
+    
+    .wrapper {
+        width: 100%;
+    }
+
+    div h2.heading-test {
+        font-size: 25px;
+    }
+    div p.mainDescript {
+        font-size: 15px;
+    }
+    div div.underRow {
+        padding-top: 20px;
+    }
+
+    ul.features {
+        margin-top: 2rem;
+    }
+    div.text-column {
+        padding-bottom: 4rem;
+    }
+    button.open {
+        position: fixed;
+        left: 88%;
+    }
+    div.navigation {
+        width: 100%;
+    }
+    div.navigation a {
+        margin-left: 0;
+        font-size: 18px;
+        width: 100%;
+    }
+}

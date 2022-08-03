@@ -12,3 +12,26 @@
     text-align: center;
     font-size: 2rem;
 }
+
+@media only screen and (max-width: 740px) {
+
+    div.LinksContainerTest{
+        justify-content: center;
+        margin-top: 40px;
+        margin-left: 0
+    }
+
+    .LinksContainerTest .test {
+        width: 100%;
+        font-size: 1.5rem;
+
+    }
+    .test {
+        height: 70px;
+    }
+
+     h5.text {
+        font-size: 1.250rem;
+    }
+
+}

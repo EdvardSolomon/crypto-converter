@@ -29,7 +29,7 @@ export default () => {
 
   return (
       <Container>
-          <HeroRow>
+          <HeroRow className="row-container">
             <Heading className="header">Thank You!</Heading>
             <div className="order" tw="mt-12 text-center">
              Ваш запрос скоро будет обработан.

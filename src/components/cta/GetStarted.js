@@ -34,7 +34,7 @@ export default ({
       <PrimaryBackgroundContainer>
         <Row>
           <TextContainer>
-            <Text>{text}</Text>
+            <Text className="text">{text}</Text>
           </TextContainer>
           <LinksContainer className='LinksContainerTest'>
             <PrimaryLink href={primaryLinkUrl} className='test'>{primaryLinkText}</PrimaryLink>

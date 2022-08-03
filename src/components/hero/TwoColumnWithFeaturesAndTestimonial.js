@@ -32,7 +32,7 @@ export default ({
             <TextColumn className="text-column">
               <Heading className="heading-test">{heading}</Heading>
               <Description className="mainDescript">{description}</Description>
-              <FeatureList>
+              <FeatureList className="features">
                 {features.map((feature, index) => (
                   <Feature key={index}>
                     <FeatureIcon />
